@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jóga — Michaela Stránská</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Public+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F0ECE3;
+    --bg-alt: #E6E0D2;
+    --surface: #FAF7F1;
+    --ink: #23282C;
+    --ink-soft: #5C6368;
+    --blue: #3E4749;
+    --blue-deep: #1E2526;
+    --gold: #A97D2E;
+    --line: #D8D2C4;
+    --radius: 2px;
+    --radius-lg: 28px;
+    --radius-pill: 999px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Public Sans', -apple-system, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3{
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 400;
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .eyebrow{
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  a{ color: inherit; }
+
+  .wrap{
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  header.site-nav{
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(237,230,219,0.88);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-row{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    padding: 18px 32px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .nav-name{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .nav-logo-icon{
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+  }
+  .nav-name-text{
+    font-family: 'Public Sans', -apple-system, sans-serif;
+    font-size: 1.02rem;
+    font-weight: 500;
+    letter-spacing: 0.005em;
+    line-height: 1.2;
+  }
+  .nav-name-tagline{
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.8rem;
+    color: var(--gold);
+    line-height: 1.2;
+  }
+  .nav-links{
+    display:flex;
+    gap: 28px;
+    list-style:none;
+    margin:0; padding:0;
+    font-size: 0.85rem;
+    letter-spacing: 0.03em;
+  }
+  .nav-links a{
+    text-decoration:none;
+    color: var(--ink-soft);
+    transition: color .2s ease;
+  }
+  .nav-links a:hover{ color: var(--ink); }
+  .nav-links a.nav-cta{
+    color: var(--surface, #fff);
+    background: var(--blue-deep);
+    padding: 8px 16px;
+    border-radius: var(--radius-pill);
+    letter-spacing: 0.05em;
+    transition: background .2s ease;
+  }
+  .nav-links a.nav-cta:hover{ background: var(--blue); color: var(--surface, #fff); }
+  .nav-links a.current{ color: var(--ink); border-bottom: 1px solid var(--blue); }
+  @media (max-width: 640px){ .nav-links{ display:none; } }
+
+  .btn{
+    display:inline-block;
+    padding: 14px 26px;
+    font-size: 0.88rem;
+    letter-spacing: 0.02em;
+    text-decoration:none;
+    border-radius: var(--radius-pill);
+    transition: transform .2s ease, background .2s ease;
+    border: 1px solid transparent;
+  }
+  .btn-primary{
+    background: var(--blue-deep);
+    color: var(--bg);
+  }
+  .btn-primary:hover{ background: var(--blue); transform: translateY(-1px); }
+  .btn-ghost{
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+  .btn-ghost:hover{ background: var(--surface); }
+
+  .page-hero{
+    padding: 72px 32px 56px;
+  }
+  .page-hero h1{
+    font-size: clamp(2.2rem, 4.6vw, 3.1rem);
+    color: var(--blue-deep);
+    margin-top: 12px;
+  }
+  .page-hero p.lede{
+    margin-top: 20px;
+    max-width: 52ch;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+  }
+
+  section{ padding: 64px 0; }
+  .section-alt{ background: var(--bg-alt); }
+  .prose{ max-width: 62ch; color: var(--ink-soft); font-size: 1.02rem; }
+  .prose p{ margin: 0 0 20px; }
+  .prose p:last-child{ margin-bottom: 0; }
+  .block-head{ margin-bottom: 20px; }
+  .block-head h2{ font-size: 1.7rem; color: var(--blue-deep); margin-top: 8px; }
+  .block-photo-single{
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    margin-bottom: 32px;
+  }
+  .block-photo-single img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .gallery{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--line);
+    margin-top: 28px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .gallery img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    aspect-ratio: 4/5;
+  }
+  @media (max-width: 640px){ .gallery{ grid-template-columns: 1fr; } }
+
+  .price-row{
+    display:flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 20px;
+    padding: 20px 0;
+    border-top: 1px solid var(--ink);
+    max-width: 460px;
+  }
+  .price-amount{
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+        font-size: 1.2rem;
+    color: var(--blue);
+    white-space: nowrap;
+  }
+
+  footer{
+    padding: 40px 32px;
+    text-align:center;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line);
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-row">
+    <a href="index.html" class="nav-name">
+      <svg class="nav-logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="14" stroke="var(--gold)" stroke-width="3" stroke-dasharray="44 44" stroke-dashoffset="-22"/>
+        <circle cx="20" cy="20" r="8" fill="var(--gold)"/>
+      </svg>
+      <span class="nav-name-text">Michaela Stránská<span class="nav-name-tagline">Do Ticha</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="masaz.html">Masáže</a></li>
+      <li><a href="kranio.html">Kraniosakrální ošetření</a></li>
+      <li><a href="joga.html" class="current">Jóga</a></li>
+      <li><a href="o-mne.html">O mně</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+      <li><a href="https://tidycal.com/michaelastranska" target="_blank" rel="noopener" class="nav-cta">Rezervace</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="page-hero wrap">
+  <span class="eyebrow">Služby</span>
+  <h1>Jóga</h1>
+  <p class="lede">Pravidelné lekce jógy a retreaty Spolučas.</p>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="prose" style="margin-bottom:28px;">
+      <p>Jógová praxe nám poskytuje nástroje, jak nalézt vnitřní klid a uvolnění. Pomáhá nám při regulaci. Cesta, jak se skrze pohyb a dech znovu naladit na vlastní tělo – ne jako sportovní výkon, ale jako cesta k sobě.</p>
+      <p>Jóga je pro mě nástrojem pro ztišení se a naslouchání vnitřnímu světu. Do svých lekcí přináším principy zdravého pohybu, tak abychom v těle mohli nalézat oporu, prostor a sílu. Věřím, že z toho, co jóga přináší, si může vybrat každý. Z širokého spektra zvolit tu cestu, která nás přivede do rovnováhy. To znamená, že pro každého je cesta jiná.</p>
+    </div>
+    <div class="block-photo-single"><img src="images/joga.jpg" alt="Lekce jógy"></div>
+    <div class="block-head">
+      <span class="eyebrow">Pravidelné lekce</span>
+      <h2>Myšlínské zahrady — neděle v 19 hod</h2>
+    </div>
+    <div class="prose">
+      <p>Rezervace přes <a href="https://chat.whatsapp.com/LINQtxt7jJGLaW1zaMEpYY?mode=gi_t" target="_blank" rel="noopener" style="border-bottom:1px solid var(--line);">whatsappovou skupinu</a> nebo na tel. čísle <a href="tel:+420720438490" style="border-bottom:1px solid var(--line);">720 438 490</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="eyebrow">Retreaty</span>
+    </div>
+    <div class="prose">
+      <p>Prodloužené víkendy, kde máme víc prostoru společnou praxi, rozvíjení kontaktu s vnitřním světem a sdílení. Více o retreatech se dozvíte na Instagramu @spolučas.</p>
+    </div>
+    <div class="gallery">
+      <img src="images/retreat-vecer.jpg" alt="Společný večer u kamen na retreatu">
+      <img src="images/retreat-219.jpg" alt="Sdílení a přátelství na retreatu">
+    </div>
+    <div style="margin-top:32px; padding-top:28px; border-top:1px solid var(--line);">
+      <h3 style="font-size:1.3rem; margin-bottom:16px;">Podzimní spolučas Beskydy<span style="display:block; font-size:0.95rem; font-weight:400; color:var(--ink-soft); margin-top:6px;">28. 10. – 1. 11. 2026</span></h3>
+      <a class="btn btn-primary" href="https://drive.google.com/file/d/1HfNUib2BIRx4S12-7PARXLJHP4kiixOq/view" target="_blank" rel="noopener">Více informací</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Michaela Stránská. Všechna práva vyhrazena. · <a href="index.html">Zpět na hlavní stránku</a>
+</footer>
+
+</body>
+</html>
