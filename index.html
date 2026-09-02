@@ -532,6 +532,18 @@
     text-transform: uppercase;
     color: var(--blue);
   }
+  .testimonial-author{
+    display:flex;
+    align-items:center;
+    gap: 12px;
+  }
+  .testimonial-author img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
   @media (max-width: 780px){ .testimonial-grid{ grid-template-columns: 1fr; } }
 
   /* ---------- CONTACT ---------- */
@@ -801,19 +813,31 @@
     <div class="testimonial-grid">
       <div class="testimonial">
         <p>„Po Míši doteku pokaždé cítím mír a uzemnění, které do života potřebuju. Jako masérka jsem dlouho hledala někoho, kdo masáže dělá vědomě a se záměrem pomoct a odlehčit tak, jak se o to vždy sama snažím, a u Míši jsem přesně tohle našla ❤️“</p>
-        <cite>Tereza</cite>
+        <div class="testimonial-author">
+          <img src="images/recenze-tereza.jpg" alt="Tereza" loading="lazy">
+          <cite>Tereza</cite>
+        </div>
       </div>
       <div class="testimonial">
         <p>„Miška, její dotek a lehátko je jedno z mých oblíbených míst na světě. Svou práci dělá s velkou empatií k tělu i k duši a pomáhá tak ulevit obojímu. Děkuji, že můžu při každé návštěvě procházet jedinečnou cestou hojení a péče!“</p>
-        <cite>Veronika</cite>
+        <div class="testimonial-author">
+          <img src="images/recenze-veronika.jpg" alt="Veronika" loading="lazy">
+          <cite>Veronika</cite>
+        </div>
       </div>
       <div class="testimonial">
         <p>„Míša má skutečně ruce, které ji vedou od srdce. Není to jen fyzické uvolnění, ale i hluboký smyslový prožitek. Sama mám obecně problém s dotykem, ale u Míši cítím neuvěřitelnou důvěru a bezpečí. Její přístup je citlivý, autentický a velmi léčivý.“</p>
-        <cite>Veronika, alias Gibi</cite>
+        <div class="testimonial-author">
+          <img src="images/recenze-veronika-gibi.jpg" alt="Veronika, alias Gibi" loading="lazy">
+          <cite>Veronika, alias Gibi</cite>
+        </div>
       </div>
       <div class="testimonial">
         <p>„Návštěva u Míši je víc než jen masáž, je to příjemný relaxační zážitek. Díky jejím kouzelným rukám a přátelské atmosféře plné klidu zapomenu na všechny starosti a vždy odcházím jako znovuzrozený.“</p>
-        <cite>Zbyněk</cite>
+        <div class="testimonial-author">
+          <img src="images/recenze-zbynek.jpg" alt="Zbyněk" loading="lazy">
+          <cite>Zbyněk</cite>
+        </div>
       </div>
     </div>
   </div>
